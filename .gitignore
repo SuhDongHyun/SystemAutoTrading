@@ -10,4 +10,7 @@ wheels/
 .venv
 
 # Jupyter Notebook
-.ipynb
+*.ipynb
+
+# Config File
+.env
