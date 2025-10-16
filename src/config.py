@@ -20,10 +20,11 @@ class Settings:
     BASE_URL: str | None = os.getenv("BASE_URL")
     APP_KEY: str | None = os.getenv("APP_KEY")
     APP_SECRET: str | None = os.getenv("APP_SECRET")
+    CUSTTYPE: str | None = os.getenv("CUSTTYPE")
 
     def validate(self):
         missing = [
-            key for key in ["BASE_URL", "APP_KEY", "APP_SECRET"]
+            key for key in ["BASE_URL", "APP_KEY", "APP_SECRET", "CUSTTYPE"]
             if not getattr(self, key)
         ]
         if missing:
