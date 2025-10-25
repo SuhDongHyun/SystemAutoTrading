@@ -2,7 +2,7 @@ import time
 import requests
 from typing import Optional, Dict
 
-from .config import settings
+from src.config import settings
 
 # ---- 모듈 전역 캐시 (하루 1회 발급 전제) ----
 _ACCESS_TOKEN: Optional[str] = None
