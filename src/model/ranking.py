@@ -45,3 +45,32 @@ class FluctuationBody(BaseModel):
     msg_cd: str    #응답코드
     msg1: str    #응답메세지
     output: List[FluctuationOutput]    #응답상세
+
+@dataclass
+class VolumeRankOutput:
+    hts_kor_isnm: str    #HTS 한글 종목명
+    mksc_shrn_iscd: str    #유가증권 단축 종목코드
+    data_rank: str    #데이터 순위
+    stck_prpr: str    #주식 현재가
+    prdy_vrss_sign: str    #전일 대비 부호
+    prdy_vrss: str    #전일 대비
+    prdy_ctrt: str    #전일 대비율
+    acml_vol: str    #누적 거래량
+    prdy_vol: str    #전일 거래량
+    lstn_stcn: str    #상장 주수
+    avrg_vol: str    #평균 거래량
+    n_befr_clpr_vrss_prpr_rate: str    #N일전종가대비현재가대비율
+    vol_inrt: str    #거래량증가율
+    vol_tnrt: str    #거래량 회전율
+    nday_vol_tnrt: str    #N일 거래량 회전율
+    avrg_tr_pbmn: str    #평균 거래 대금
+    tr_pbmn_tnrt: str    #거래대금회전율
+    nday_tr_pbmn_tnrt: str    #N일 거래대금 회전율
+    acml_tr_pbmn: str    #누적 거래 대금
+
+@dataclass
+class VolumeRankBody(BaseModel):
+    rt_cd: str    #성공 실패 여부
+    msg_cd: str    #응답코드
+    msg1: str    #응답메세지
+    output: List[VolumeRankOutput]    #응답상세
