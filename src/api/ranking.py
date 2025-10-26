@@ -1,5 +1,5 @@
 from src.http import api_get
-from src.model.ranking import HtsTopViewBody, FluctuationBody
+from src.model.ranking import HtsTopViewBody, FluctuationBody, VolumeRankBody
 
 # --- HTS 조회 상위 20종목 ---
 def get_hts_top_view() -> HtsTopViewBody:
@@ -35,3 +35,26 @@ def get_fluctuation() -> FluctuationBody:
         tr_id='FHPST01700000'
     )
     return FluctuationBody.model_validate(resp.json())
+
+# --- 거래량 상위 30종목 ---
+def get_volume_rank() -> VolumeRankBody:
+    path = 'uapi/domestic-stock/v1/quotations/volume-rank'
+    params = {
+        'FID_COND_MRKT_DIV_CODE': 'J',
+        'FID_COND_SCR_DIV_CODE': '20171',
+        'FID_INPUT_ISCD': '0000',
+        'FID_DIV_CLS_CODE': '0',
+        'FID_BLNG_CLS_CODE': '0',
+        'FID_TRGT_CLS_CODE': '111111111',
+        'FID_TRGT_EXLS_CLS_CODE': '0000000000',
+        'FID_INPUT_PRICE_1': '',
+        'FID_INPUT_PRICE_2': '',
+        'FID_VOL_CNT': '',
+        'FID_INPUT_DATE_1': ''
+    }
+    resp = api_get(
+        path=path,
+        params=params,
+        tr_id='FHPST01710000'
+    )
+    return VolumeRankBody.model_validate(resp.json())
