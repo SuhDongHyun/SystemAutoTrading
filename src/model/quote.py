@@ -115,3 +115,18 @@ class InquireDailyItemchartpriceBody(BaseModel):
     msg1: str    #응답메세지
     output1: InquireDailyItemchartpriceOutput1    #응답상세
     output2: List[InquireDailyItemchartpriceOutput2]    #응답상세
+
+class InquireCcnlOutput(BaseModel):
+    stck_cntg_hour: str    #주식 체결 시간
+    stck_prpr: str    #주식 현재가
+    prdy_vrss: str    #전일 대비
+    prdy_vrss_sign: str    #전일 대비 부호
+    cntg_vol: str    #체결 거래량
+    tday_rltv: str    #당일 체결강도
+    prdy_ctrt: str    #전일 대비율
+
+class InquireCcnlBody(BaseModel):
+    rt_cd: str    #성공 실패 여부
+    msg_cd: str    #응답코드
+    msg1: str    #응답메세지
+    output: List[InquireCcnlOutput]    #응답상세
