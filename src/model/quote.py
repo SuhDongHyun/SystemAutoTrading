@@ -1,6 +1,5 @@
 from src.model import *
 
-@dataclass
 class InquirePrice2Output(BaseModel):
     rprs_mrkt_kor_name: str    #대표 시장 한글 명
     new_hgpr_lwpr_cls_code: Optional[str] = None   #신 고가 저가 구분 코드
@@ -57,9 +56,62 @@ class InquirePrice2Output(BaseModel):
     stck_oprc: str    #주식 시가2
     prdy_vol: str    #전일 거래량
 
-@dataclass
 class InquirePrice2Body(BaseModel):
     rt_cd: str    #성공 실패 여부
     msg_cd: str    #응답코드
     msg1: str    #응답메세지
     output: InquirePrice2Output    #응답상세
+
+class InquireDailyItemchartpriceOutput1(BaseModel):
+    prdy_vrss: str    #전일 대비
+    prdy_vrss_sign: str    #전일 대비 부호
+    prdy_ctrt: str    #전일 대비율
+    stck_prdy_clpr: str    #주식 전일 종가
+    acml_vol: str    #누적 거래량
+    acml_tr_pbmn: str    #누적 거래 대금
+    hts_kor_isnm: str    #HTS 한글 종목명
+    stck_prpr: str    #주식 현재가
+    stck_shrn_iscd: str    #주식 단축 종목코드
+    prdy_vol: str    #전일 거래량
+    stck_mxpr: str    #주식 상한가
+    stck_llam: str    #주식 하한가
+    stck_oprc: str    #주식 시가2
+    stck_hgpr: str    #주식 최고가
+    stck_lwpr: str    #주식 최저가
+    stck_prdy_oprc: str    #주식 전일 시가
+    stck_prdy_hgpr: str    #주식 전일 최고가
+    stck_prdy_lwpr: str    #주식 전일 최저가
+    askp: str    #매도호가
+    bidp: str    #매수호가
+    prdy_vrss_vol: str    #전일 대비 거래량
+    vol_tnrt: str    #거래량 회전율
+    stck_fcam: str    #주식 액면가
+    lstn_stcn: str    #상장 주수
+    cpfn: str    #자본금
+    hts_avls: str    #HTS 시가총액
+    per: str    #PER
+    eps: str    #EPS
+    pbr: str    #PBR
+    itewhol_loan_rmnd_ratem: str = Field(alias='itewhol_loan_rmnd_ratem name')    #전체 융자 잔고 비율
+
+class InquireDailyItemchartpriceOutput2(BaseModel):
+    stck_bsop_date: str    #주식 영업 일자
+    stck_clpr: str    #주식 종가
+    stck_oprc: str    #주식 시가2
+    stck_hgpr: str    #주식 최고가
+    stck_lwpr: str    #주식 최저가
+    acml_vol: str    #누적 거래량
+    acml_tr_pbmn: str    #누적 거래 대금
+    flng_cls_code: str    #락 구분 코드
+    prtt_rate: str    #분할 비율
+    mod_yn: str    #변경 여부
+    prdy_vrss_sign: str    #전일 대비 부호
+    prdy_vrss: str    #전일 대비
+    revl_issu_reas: str    #재평가사유코드
+
+class InquireDailyItemchartpriceBody(BaseModel):
+    rt_cd: str    #성공 실패 여부
+    msg_cd: str    #응답코드
+    msg1: str    #응답메세지
+    output1: InquireDailyItemchartpriceOutput1    #응답상세
+    output2: List[InquireDailyItemchartpriceOutput2]    #응답상세
